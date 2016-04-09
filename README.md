@@ -1,2 +1,2 @@
 # meteor-test
-Test
+Test 2
