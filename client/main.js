@@ -1,6 +1,5 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-<<<<<<< HEAD
 import './main.html';
 
 
@@ -238,6 +237,8 @@ Template.body.events({
     }
 })
 =======
+=======
+>>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
 
 import './main.html';
 
@@ -262,4 +263,7 @@ Template.hello.events({
 Template.timeNow.helpers(
     {current_time: new Date()}
 );
+<<<<<<< HEAD
+>>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
+=======
 >>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
