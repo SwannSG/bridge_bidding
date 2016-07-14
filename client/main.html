@@ -1,0 +1,118 @@
+<head>
+  <title>bridge_bidding</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1,
+   maximum-scale=1, user-scalable=no">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <nav class="row">
+            <!-- menu stuff goes here     -->
+            <button id="deal" class="btn btn-default" value='deal'>Deal</button>
+        </nav>
+        <div class="row">
+            <div class="col-xs-2 left"><!-- left column -->
+                <h3 class="west">
+                    West
+                </h3>
+                {{> west}}
+            </div>
+            <div class="col-xs-8"><!-- center column -->
+                {{> north}}
+                <div class="center-content">
+                    <div class="col-xs-6">
+                        {{> bidButtons}}
+                    </div>
+                    <div class="col-xs-6">
+                        {{> bidSequence}}
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <button id="pass" class="btn btn-default" value='pass'>Pass</button>
+                </div>
+                <div class="col-xs-10">
+                    {{> south}}
+                </div>
+            </div>
+            <div class="col-xs-2 right"><!-- right column -->
+                {{> east}}
+            </div>
+        </div>
+    </div>
+</body>
+
+<template name="north">
+    <div class="north hand">
+        {{#each card in north}}
+            <img src="{{card}}.svg" class="north card card{{@index}}" />
+        {{/each}}
+    </div>
+</template>
+
+<template name="west">
+    <div class="west hand">
+        {{#each card in west}}
+            <img src="{{card}}.svg" class="west card card{{@index}}" />
+        {{/each}}
+    </div>
+</template>
+
+<template name="east">
+    <div class="east hand">
+        {{#each card in east}}
+            <img src="{{card}}.svg" class="east card card{{@index}}" />
+        {{/each}}
+    </div>
+</template>
+
+<template name="south">
+    <div class="south hand">
+        {{#each card in south}}
+            <img src="{{card}}.svg" class="south card card{{@index}}" />
+        {{/each}}
+    </div>
+</template>
+
+<template name="bidButtons">
+    {{#each item in allBids}}
+        {{> bidSameLevel buttons=item}}
+    {{/each}}
+</template>
+
+
+<template name="bidSameLevel">
+    <div class="btn-group">
+        {{#each button in buttons}}
+            <button id={{button.id}} type="button" class="btn btn-default" value={{button.value}} {{button.da}}>{{{button.label}}}</button>
+        {{/each}}
+    </div>
+</template>
+
+<template name="bidSequence">
+    <table class="table table-striped text-center">
+        <thead>
+            <tr>
+                <th class="text-center">North</th>
+                <th class="text-center">East</th>
+                <th class="text-center">South</th>
+                <th class="text-center">West</th>
+            </tr>
+        </thead>
+        {{#each row in bidSeq}}
+            <tr>
+                <td>
+                    {{row.north}}
+                </td>
+                <td>
+                    {{row.east}}
+                </td>
+                <td>
+                    {{row.south}}
+                </td>
+                <td>
+                    {{row.west}}
+                </td>
+            </tr>
+        {{/each}}
+</table>
+</template>

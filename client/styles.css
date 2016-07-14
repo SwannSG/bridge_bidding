@@ -1,0 +1,405 @@
+/*mobile screen*/
+:root {
+    --cardheight: 80px;
+}
+
+body {
+    background-color: lightblue;
+}
+
+nav {
+    height: 50px;
+    background-color: lightgreen;
+    margin-bottom: 5px;
+}
+
+.left {/*for test only*/
+    background-color: blue;
+}
+
+.right {/*for test only*/
+    background-color: red;
+}
+
+.center-content {
+    height: calc(var(--cardheight)*1.43);
+    background-color: yellow;
+}
+
+#pass {
+    margin-top: 10px;
+}
+
+span.red {
+    color:red;
+}
+
+/*north styling *************************************************************/
+.north {
+    height: var(--cardheight);
+}
+
+.north.hand {
+    /*calculate the width of all 13 cards stacked correctly*/
+    width: calc(var(--cardheight)*2.285);
+    /*position must be set relative to allow absolute positioning of the cards to work correctly*/
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+/*ensure each card has no margin or padding*/
+.north.card {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    height: var(--cardheight);
+}
+
+.north.card0 {
+}
+
+/*each card is absolutely positioned using .north.hand as the base reference*/
+/*we might want to replace .north with .horizontal*/
+.north.card1 {
+    position: absolute;
+    left: calc(var(--cardheight)*0.144);
+}
+
+.north.card2 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*2);
+}
+
+.north.card3 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*3);
+}
+
+.north.card4 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*4);
+}
+
+.north.card5 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*5);
+}
+
+.north.card6 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*6);
+}
+
+.north.card7 {
+    position: absolute;
+    left: calc(var(--cardheight)*0.144*7);
+}
+.north.card8 {
+    position: absolute;
+    left: calc(var(--cardheight)*0.144*8);
+}
+
+.north.card9 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*9);
+}
+.north.card10 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*10);
+}
+
+.north.card11 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*11);
+}
+
+.north.card12 {
+    position:static;
+    left: calc(var(--cardheight)*0.144*12);
+}
+/*end north styling **********************************************************/
+
+
+/*west styling ***************************************************************/
+.west.hand {
+    padding: 0px;
+    margin: 0px;
+    margin-top: calc(var(--cardheight)/2);
+    margin-left: auto;
+    margin-right: auto;
+    min-height: calc(var(--cardheight)*2.42);
+    width: var(--cardheight);
+    position: relative;
+}
+
+.west.card {
+    padding: 0px;
+    margin: 0px;
+    margin-left: calc(var(--cardheight)*0.15);
+    height: var(--cardheight);
+    /*rotate each card*/
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.west.card0 {
+    position: absolute;
+    top: calc(-0.15 * var(--cardheight));
+}
+
+/*each card is absolutely positioned using .west.hand as the base reference*/
+.west.card1 {
+    position: absolute;
+    top: calc(var(--cardheight)*(1 * 0.145 - 0.15 ));
+}
+
+.west.card2 {
+    position:absolute;
+    top: calc(var(--cardheight)*(2 * 0.145 - 0.15 ));
+}
+
+.west.card3 {
+    position:absolute;
+    top: calc(var(--cardheight)*(3 * 0.145 - 0.15 ));
+}
+
+.west.card4 {
+    position:absolute;
+    top: calc(var(--cardheight)*(4 * 0.145 - 0.15 ));
+}
+
+.west.card5 {
+    position:absolute;
+    top: calc(var(--cardheight)*(5 * 0.145 - 0.15 ));
+}
+
+.west.card6 {
+    position:absolute;
+    top: calc(var(--cardheight)*(6 * 0.145 - 0.15 ));
+}
+
+.west.card7 {
+    position: absolute;
+    top: calc(var(--cardheight)*(7 * 0.145 - 0.15 ));
+}
+.west.card8 {
+    position: absolute;
+    top: calc(var(--cardheight)*(8 * 0.145 - 0.15 ));
+}
+
+.west.card9 {
+    position:absolute;
+    top: calc(var(--cardheight)*(9 * 0.145 - 0.15 ));
+}
+.west.card10 {
+    position:absolute;
+    top: calc(var(--cardheight)*(10 * 0.145 - 0.15 ));
+}
+
+.west.card11 {
+    position:absolute;
+    top: calc(var(--cardheight)*(11 * 0.145 - 0.15 ));
+}
+
+.west.card12 {
+    position:absolute;
+    top: calc(var(--cardheight)*(12 * 0.145 - 0.15 ));
+}
+
+h3.west {
+    z-index:100;
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    /*below controls positioning of h3*/
+    top: 260px;
+    left: 80px;
+}
+/*end west styling **********************************************************/
+
+
+/*east styling ***************************************************************/
+.east.hand {
+    background-color: black;
+    padding: 0px;
+    margin: 0px;
+    margin-top: calc(var(--cardheight)/2);
+    margin-left: auto;
+    margin-right:auto;
+    min-height: calc(var(--cardheight)*2.42);
+    width: var(--cardheight);
+    position: relative;
+}
+
+.east.card {
+    padding: 0px;
+    margin: 0px;
+    margin-left: calc(var(--cardheight)*0.15);
+    height: var(--cardheight);
+    /*rotate each card*/
+    -ms-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+}
+
+.east.card0 {
+    position: absolute;
+    bottom: calc(-0.15 * var(--cardheight));
+}
+
+/*each card is absolutely positioned using .east.hand as the base reference*/
+.east.card1 {
+    position: absolute;
+    bottom: calc(var(--cardheight)*(1 * 0.145 - 0.15 ));
+}
+
+.east.card2 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(2 * 0.145 - 0.15 ));
+}
+
+.east.card3 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(3 * 0.145 - 0.15 ));
+}
+
+.east.card4 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(4 * 0.145 - 0.15 ));
+}
+
+.east.card5 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(5 * 0.145 - 0.15 ));
+}
+
+.east.card6 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(6 * 0.145 - 0.15 ));
+}
+
+.east.card7 {
+    position: absolute;
+    bottom: calc(var(--cardheight)*(7 * 0.145 - 0.15 ));
+}
+.east.card8 {
+    position: absolute;
+    bottom: calc(var(--cardheight)*(8 * 0.145 - 0.15 ));
+}
+
+.east.card9 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(9 * 0.145 - 0.15 ));
+}
+.east.card10 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(10 * 0.145 - 0.15 ));
+}
+
+.east.card11 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(11 * 0.145 - 0.15 ));
+}
+
+.east.card12 {
+    position:absolute;
+    bottom: calc(var(--cardheight)*(12 * 0.145 - 0.15 ));
+}
+/*end east styling **********************************************************/
+
+
+/*south styling *************************************************************/
+.south {
+    height: var(--cardheight);
+}
+
+.south.hand {
+    /*calculate the width of all 13 cards stacked correctly*/
+    width: calc(var(--cardheight)*2.285);
+    /*position must be set relative to allow absolute positioning of the cards to work correctly*/
+    position: relative;
+    margin-left: calc(var(--cardheight)*0.172);
+    margin-top: 10px;
+
+    background-color: green;
+    display: inline-block;
+}
+
+/*ensure each card has no margin or padding*/
+.south.card {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    height: var(--cardheight);
+}
+
+.south.card0 {
+}
+
+/*each card is absolutely positioned using .south.hand as the base reference*/
+/*we might want to replace .south with .horizontal*/
+.south.card1 {
+    position: absolute;
+    left: calc(var(--cardheight)*0.144);
+}
+
+.south.card2 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*2);
+}
+
+.south.card3 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*3);
+}
+
+.south.card4 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*4);
+}
+
+.south.card5 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*5);
+}
+
+.south.card6 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*6);
+}
+
+.south.card7 {
+    position: absolute;
+    left: calc(var(--cardheight)*0.144*7);
+}
+.south.card8 {
+    position: absolute;
+    left: calc(var(--cardheight)*0.144*8);
+}
+
+.south.card9 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*9);
+}
+.south.card10 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*10);
+}
+
+.south.card11 {
+    position:absolute;
+    left: calc(var(--cardheight)*0.144*11);
+}
+
+.south.card12 {
+    position:static;
+    left: calc(var(--cardheight)*0.144*12);
+}
+/*end south styling **********************************************************/
