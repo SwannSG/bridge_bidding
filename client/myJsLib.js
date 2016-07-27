@@ -20,7 +20,7 @@ bm = {
         this.south = shuffled_pack.slice(26,39).sort(this._cmp.bind(this));
         this.west = shuffled_pack.slice(39,52).sort(this._cmp.bind(this));
     },
-    _cmp: function(a,b) {
+    _cmp: function _cmp(a,b) {                   // display order of cards on screen
         var aInt = parseInt(a.slice(2,4));
         var bInt = parseInt(b.slice(2,4));
         var aSuit = a.slice(1,2);
@@ -34,6 +34,33 @@ bm = {
         if (aInt > bInt) {return -1;}
         if (aInt < bInt) {return +1;}
     },
+    _rightDeal: function _righDeal(dealSelector) {
+        // dealSelector
+        // {}                                   any deal
+        // {points: x, distr:[nc, nd, nh, ns]}  combined
+        var dealSelector;
+        dealSelector = {} || dealSelector;  //parameter may be omitted
+        if (Object.keys(dealSelector).length === 0)
+            // empty dealSelector --> any deal
+            return true;
+        if (dealSelector.hasOwnProperty('points') && dealSelector.hasOwnProperty('distr')) {
+            // points and distr selection criteria
+            return;
+        }
+        if (dealSelector.hasOwnProperty('points')) {
+            // points selection criteria
+            return;
+        }
+        if (dealSelector.hasOwnProperty('distr')) {
+            // distr selection criteria
+            return;
+        }
+    },
+    _points: function _points() {
+        // compute total points
+        this.north.points =
+
+    }
 }
 
 getCardHeight = function() {
