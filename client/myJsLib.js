@@ -49,6 +49,7 @@ bm = {
         }
         if (dealSelector.hasOwnProperty('points')) {
             // points selection criteria
+            _points
             return;
         }
         if (dealSelector.hasOwnProperty('distr')) {
@@ -58,8 +59,36 @@ bm = {
     },
     _points: function _points() {
         // compute total points
-        this.north.points =
-
+        this.north.points = _getPoints(this.north);
+        this.east.points = _getPoints(this.east);
+        this.south.points = _getPoints(this.south);
+        this.west.points = _getPoints(this.west);
+    },
+    _getPoints: function _getPoints(hand) {
+        // x hand array
+        return hand.reduce(function(points, x) {
+            x = x.charAt(0);
+            console.log(x);
+            if (x==='j') {
+                // jack
+                return points+=1;
+            }
+            else if (x ==='q') {
+                // queen
+                return points+=2;
+            }
+            else if (x ==='k') {
+                // king
+                return points+=3;
+            }
+            else if (x ==='a') {
+                // ace
+                return points+=4;
+            }
+            else {
+                return points;
+            }
+        },0);
     }
 }
 
