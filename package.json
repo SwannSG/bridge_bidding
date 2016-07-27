@@ -1,13 +1,5 @@
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
   "name": "bridge_bidding",
-=======
-  "name": "my_first_app",
->>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
-=======
-  "name": "my_first_app",
->>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
   "private": true,
   "scripts": {
     "start": "meteor run"
