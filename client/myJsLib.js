@@ -34,37 +34,73 @@ bm = {
         if (aInt > bInt) {return -1;}
         if (aInt < bInt) {return +1;}
     },
-    _rightDeal: function _righDeal(dealSelector) {
+    rightDeal: function _rightDeal(dealSelector) {
         // dealSelector
         // {}                                   any deal
         // {points: x, distr:[nc, nd, nh, ns]}  combined
+        self = this;
         var dealSelector;
-        dealSelector = {} || dealSelector;  //parameter may be omitted
-        if (Object.keys(dealSelector).length === 0)
+        dealSelector = dealSelector || {};  //parameter may be omitted
+        console.log(dealSelector);
+        if (Object.keys(dealSelector).length === 0) {
             // empty dealSelector --> any deal
+            console.log('1');
             return true;
+        }
         if (dealSelector.hasOwnProperty('points') && dealSelector.hasOwnProperty('distr')) {
             // points and distr selection criteria
+            console.log('3');
             return;
         }
         if (dealSelector.hasOwnProperty('points')) {
             // points selection criteria
-            _points
+            console.log('2');
+            self._points(self);         // assign points to each hand
+            self._pointsCombo(self, dealSelector.points)
             return;
         }
         if (dealSelector.hasOwnProperty('distr')) {
             // distr selection criteria
+            console.log('4');
             return;
         }
+        console.log('5');
     },
-    _points: function _points() {
+    _pointsCombo: function _pointsCombo(self, points) {
+        // NS
+        if (self.north.points + self.south.points === points) {
+            return true;
+        }
+        // NE
+        if (self.north.points + self.east.points === points) {
+            return true;
+        }
+        // NW
+        if (self.north.points + self.west.points === points) {
+            return true;
+        }
+        // ES
+        if (self.east.points + self.south.points === points) {
+            return true;
+        }
+        // EW
+        if (self.east.points + self.west.points === points) {
+            return true;
+        }
+        // SW
+        if (self.south.points + self.west.points === points) {
+            return true;
+        }
+        return false;
+    },
+    _points: function _points(self) {
         // compute total points
-        this.north.points = _getPoints(this.north);
-        this.east.points = _getPoints(this.east);
-        this.south.points = _getPoints(this.south);
-        this.west.points = _getPoints(this.west);
+        self.north.points = self._getPoints(self, self.north);
+        self.east.points = self._getPoints(self, self.east);
+        self.south.points = self._getPoints(self, self.south);
+        self.west.points = self._getPoints(self, self.west);
     },
-    _getPoints: function _getPoints(hand) {
+    _getPoints: function _getPoints(self, hand) {
         // x hand array
         return hand.reduce(function(points, x) {
             x = x.charAt(0);
