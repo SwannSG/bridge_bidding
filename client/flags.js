@@ -1,6 +1,6 @@
 // Usage: global flags across server and set of clients
 // client Session flag change is propogated to Server and other clients
-// Server flag changes is propogaed to all clients
+// Server flag changes is propogated to all clients
 // Setup ******************************************
 // In /lib
 //      ColFlag1 = new Mongo.Collection('colflag1');

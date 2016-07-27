@@ -28,27 +28,6 @@ Meteor.startup(function() {
 
     // global flag
     nonReactiveGlobals = {};
-
-    Meteor.subscribe("gf1", {
-        // when subscription is complete the onReady function is triggered
-        onReady: function() {
-            console.log('onReady');
-            nonReactiveGlobals.gf1 = Gf1.findOne()._id;
-            Session.set('gf1', Gf1.findOne().flag)
-            // just to keep everything in one place we place observe() here
-            // added, changed, removed automatically run when data in Gf1 changes
-            Gf1.find().observe({
-                added: function() {
-                },
-                changed: function() {
-                    console.log('changed');
-                    Session.set('gf1', Gf1.findOne().flag);
-                },
-                removed: function() {
-                },
-            });
-        }
-    });
     globalFlags.create('subColFlag1', ColFlag1, 'sesColFlag1');
     globalFlags.create('subColFlag2', ColFlag2, 'sesColFlag2');
 
