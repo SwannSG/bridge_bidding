@@ -73,14 +73,23 @@ bm = {
         }
         // NE
         if (self.north.points + self.east.points === points) {
+            var temp = self.east.points;
+            self.east.points = self.south.points;
+            self.south.points = temp;
             return true;
         }
         // NW
         if (self.north.points + self.west.points === points) {
+            var temp = self.west.points;
+            self.west.points = self.south.points;
+            self.south.points = temp;
             return true;
         }
         // ES
         if (self.east.points + self.south.points === points) {
+            var temp = self.east.points;
+            self.east.points = self.north.points;
+            self.north.points = temp;
             return true;
         }
         // EW
