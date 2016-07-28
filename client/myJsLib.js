@@ -56,48 +56,59 @@ bm = {
             // points selection criteria
             console.log('2');
             self._points(self);         // assign points to each hand
-            self._pointsCombo(self, dealSelector.points)
-            return;
+            return self._pointsCombo(self, dealSelector.points)
         }
         if (dealSelector.hasOwnProperty('distr')) {
             // distr selection criteria
             console.log('4');
+            self._distr(self);         // assign distr to each hand
+            return self._distrCombo(self, dealSelector.distr);
             return;
         }
         console.log('5');
     },
     _pointsCombo: function _pointsCombo(self, points) {
+        // test for points combination
         // NS
         if (self.north.points + self.south.points === points) {
             return true;
         }
         // NE
         if (self.north.points + self.east.points === points) {
-            var temp = self.east.points;
-            self.east.points = self.south.points;
-            self.south.points = temp;
+            var temp = self.east;
+            self.east = self.south;
+            self.south = temp;
             return true;
         }
         // NW
         if (self.north.points + self.west.points === points) {
-            var temp = self.west.points;
-            self.west.points = self.south.points;
-            self.south.points = temp;
+            var temp = self.west;
+            self.west = self.south;
+            self.south = temp;
             return true;
         }
         // ES
         if (self.east.points + self.south.points === points) {
-            var temp = self.east.points;
-            self.east.points = self.north.points;
-            self.north.points = temp;
+            var temp = self.east;
+            self.east = self.north;
+            self.north = temp;
             return true;
         }
         // EW
         if (self.east.points + self.west.points === points) {
+            var temp = self.east;
+            self.east = self.north;
+            self.north = temp;
+            var temp1 = self.west;
+            self.west = self.south;
+            self.south = temp1;
             return true;
         }
         // SW
         if (self.south.points + self.west.points === points) {
+            var temp = self.west;
+            self.west = self.north;
+            self.north = temp;
             return true;
         }
         return false;
@@ -113,7 +124,6 @@ bm = {
         // x hand array
         return hand.reduce(function(points, x) {
             x = x.charAt(0);
-            console.log(x);
             if (x==='j') {
                 // jack
                 return points+=1;
@@ -134,6 +144,80 @@ bm = {
                 return points;
             }
         },0);
+    },
+    _distrCombo: _distrCombo(self, dealSelector.distr) {
+        // test for distr combination
+        var combDistr;
+        //NS
+        combDistr = _sumDistr(self, self.north.distr, self.south.distr);
+        if _comboMatch(self, combDistr, dealSelector.distr) {
+            return true
+        }
+        //NE
+
+        //NW
+
+        //ES
+
+        //EW
+
+        //SW
+    },
+    _comboMatch: function _comboMatch(self, combDistr, select) {
+        var result = [];
+        // c
+        if (select[0] === -1) {
+            result.push(true);
+        }
+        else {
+            if (combDistr[0]===select[0]) {
+                result.push(true);
+            }
+            else {
+                result.push(false);
+            }
+        }
+        // d
+
+        // h
+
+        // s
+
+        return result.every(true);
+    },
+    _sumDistr: function _sumDistr(self, a, b) {
+        return [a[0]+b[0], a[1]+b[1], a[2]+b[2], a[3]+b[3]]
+    },
+    _distr: function _distr(self) {
+        // distribution
+        self.north.distr = self._getDistr(self, self.north);
+        self.east.distr = self._getDistr(self, self.east);
+        self.south.distr = self._getDistr(self, self.south);
+        self.west.distr = self._getDistr(self, self.west);
+    },
+    _getDistr: function _getDistr(self, hand) {
+        // determine distribution
+        var nc = 0;
+        var nd = 0;
+        var nh = 0;
+        var ns = 0;
+        var item;
+        for (var i=0; i<hand.length; i++) {
+            item = hand[i].charAt(1);
+            if (item === 'c') {
+                nc++;
+            }
+            else if (item === 'd') {
+                nd++;
+            }
+            else if (item === 'h') {
+                nh++;
+            }
+            else if (item === 's') {
+                ns++;
+            }
+        }
+        return [nc, nd, nh, ns];
     }
 }
 
@@ -145,4 +229,12 @@ getCardHeight = function() {
 
 setCardHeight = function(height) {
     document.documentElement.style.setProperty('--cardheight', height + 'px');
+}
+
+
+for (var i=0; i < 1000; i++) {
+    bm.shuffle();
+    if (bm.rightDeal({points:20})) {
+        break;
+    }
 }
