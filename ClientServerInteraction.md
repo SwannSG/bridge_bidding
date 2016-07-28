@@ -50,7 +50,8 @@ In addition Server sends a *rightDealFound(deal)* message to participating clien
 If the Server state t0 is NOT in the designated state, then any action of message is ignored.
 
 | Client Send                 | Server State t0     | Server State t1     | Server Send                 | Server Action  |
-| --------------------------- | ------------------- | ------------------- | --------------------------- | -------------- |                             |                             | idle                | waitingForRightDeal | findRightDeal(dealCriteria) | Invoke dealing |
+| --------------------------- | ------------------- | ------------------- | --------------------------- | -------------- |
+|                             | idle                | waitingForRightDeal | findRightDeal(dealCriteria) | Invoke dealing |
 | findRightDeal(dealCriteria) | idle                | waitingForRightDeal |                             |                |
 | rightDealFound(deal)        | waitingForRightDeal | idle                | rightDealFound(deal)        |                |
 
