@@ -53,3 +53,6 @@ If the Server state t0 is NOT in the designated state, then any action of messag
 | --------------------------- | ------------------- | ------------------- | --------------------------- | -------------- |                             |                             | idle                | waitingForRightDeal | findRightDeal(dealCriteria) | Invoke dealing |
 | findRightDeal(dealCriteria) | idle                | waitingForRightDeal |                             |                |
 | rightDealFound(deal)        | waitingForRightDeal | idle                | rightDealFound(deal)        |                |
+
+
+end
