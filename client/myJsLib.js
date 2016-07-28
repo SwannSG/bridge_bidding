@@ -50,7 +50,18 @@ bm = {
         if (dealSelector.hasOwnProperty('points') && dealSelector.hasOwnProperty('distr')) {
             // points and distr selection criteria
             console.log('3');
-            return;
+            self._points(self);         // assign points to each hand
+            self._distr(self);          // assign distr to each hand
+            if (self._pointsCombo(self, dealSelector.points)) {
+                var combDistr = self._sumDistr(self, self.north.distr, self.south.distr)
+                if (self._comboMatch(self, combDistr, dealSelector.distr)) {
+                    return true
+                }
+                else {
+                    return false;
+                }
+            }
+            return false;
         }
         if (dealSelector.hasOwnProperty('points')) {
             // points selection criteria
@@ -63,7 +74,6 @@ bm = {
             console.log('4');
             self._distr(self);         // assign distr to each hand
             return self._distrCombo(self, dealSelector.distr);
-            return;
         }
         console.log('5');
     },
@@ -75,27 +85,27 @@ bm = {
         }
         // NE
         if (self.north.points + self.east.points === points) {
-            _changeHands(self, 'NE')
+            self._changeHands(self, 'NE')
             return true;
         }
         // NW
         if (self.north.points + self.west.points === points) {
-            _changeHands(self, 'NW')
+            self._changeHands(self, 'NW')
             return true;
         }
         // ES
         if (self.east.points + self.south.points === points) {
-            _changeHands(self, 'ES')
+            self._changeHands(self, 'ES')
             return true;
         }
         // EW
         if (self.east.points + self.west.points === points) {
-            _changeHands(self, 'EW')
+            self._changeHands(self, 'EW')
             return true;
         }
         // SW
         if (self.south.points + self.west.points === points) {
-            _changeHands(self, 'SW')
+            self._changeHands(self, 'SW')
             return true;
         }
         return false;
@@ -128,6 +138,7 @@ bm = {
             var temp = self.west;
             self.west = self.north;
             self.north = temp;
+        }
     },
     _points: function _points(self) {
         // compute total points
@@ -161,40 +172,40 @@ bm = {
             }
         },0);
     },
-    _distrCombo: _distrCombo(self, selectDistr) {
+    _distrCombo: function _distrCombo(self, selectDistr) {
         // test for distr combination
         var combDistr;
         //NS
-        combDistr = _sumDistr(self, self.north.distr, self.south.distr);
+        combDistr = self._sumDistr(self, self.north.distr, self.south.distr);
         if (self._comboMatch(self, combDistr, selectDistr)) {
             return true;
         }
         //NE
-        combDistr = _sumDistr(self, self.north.distr, self.east.distr);
+        combDistr = self._sumDistr(self, self.north.distr, self.east.distr);
         if (self._comboMatch(self, combDistr, selectDistr)) {
             self._changeHands(self, 'NE');
             return true;
         }
         //NW
-        combDistr = _sumDistr(self, self.north.distr, self.west.distr);
+        combDistr = self._sumDistr(self, self.north.distr, self.west.distr);
         if (self._comboMatch(self, combDistr, selectDistr)) {
             self._changeHands(self, 'NW');
             return true
         }
         //ES
-        combDistr = _sumDistr(self, self.east.distr, self.south.distr);
+        combDistr = self._sumDistr(self, self.east.distr, self.south.distr);
         if (self._comboMatch(self, combDistr, selectDistr)) {
             self._changeHands(self, 'ES');
             return true
         }
         //EW
-        combDistr = _sumDistr(self, self.east.distr, self.west.distr);
+        combDistr = self._sumDistr(self, self.east.distr, self.west.distr);
         if (self._comboMatch(self, combDistr, selectDistr)) {
             self._changeHands(self, 'EW');
             return true
         }
         //SW
-        combDistr = _sumDistr(self, self.south.distr, self.west.distr);
+        combDistr = self._sumDistr(self, self.south.distr, self.west.distr);
         if (self._comboMatch(self, combDistr, selectDistr)) {
             self._changeHands(self, 'SW');
             return true
@@ -270,6 +281,20 @@ setCardHeight = function(height) {
 for (var i=0; i < 1000; i++) {
     bm.shuffle();
     if (bm.rightDeal({points:20})) {
+        break;
+    }
+}
+
+for (var i=0; i < 1000; i++) {
+    bm.shuffle();
+    if (bm.rightDeal({distr:[8,6,6,6]})) {
+        break;
+    }
+}
+
+for (var i=0; i < 1000; i++) {
+    bm.shuffle();
+    if (bm.rightDeal({points:20, distr:[8,6,6,6]})) {
         break;
     }
 }
