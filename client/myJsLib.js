@@ -75,43 +75,59 @@ bm = {
         }
         // NE
         if (self.north.points + self.east.points === points) {
-            var temp = self.east;
-            self.east = self.south;
-            self.south = temp;
+            _changeHands(self, 'NE')
             return true;
         }
         // NW
         if (self.north.points + self.west.points === points) {
-            var temp = self.west;
-            self.west = self.south;
-            self.south = temp;
+            _changeHands(self, 'NW')
             return true;
         }
         // ES
         if (self.east.points + self.south.points === points) {
-            var temp = self.east;
-            self.east = self.north;
-            self.north = temp;
+            _changeHands(self, 'ES')
             return true;
         }
         // EW
         if (self.east.points + self.west.points === points) {
+            _changeHands(self, 'EW')
+            return true;
+        }
+        // SW
+        if (self.south.points + self.west.points === points) {
+            _changeHands(self, 'SW')
+            return true;
+        }
+        return false;
+    },
+    _changeHands: function _changeHands(self, str) {
+        if (str==='NE') {
+            var temp = self.east;
+            self.east = self.south;
+            self.south = temp;
+        }
+        else if (str==='NW') {
+            var temp = self.west;
+            self.west = self.south;
+            self.south = temp;
+        }
+        else if (str==='ES') {
+            var temp = self.east;
+            self.east = self.north;
+            self.north = temp;
+        }
+        else if (str==='EW') {
             var temp = self.east;
             self.east = self.north;
             self.north = temp;
             var temp1 = self.west;
             self.west = self.south;
             self.south = temp1;
-            return true;
         }
-        // SW
-        if (self.south.points + self.west.points === points) {
+        else if (str==='SW') {
             var temp = self.west;
             self.west = self.north;
             self.north = temp;
-            return true;
-        }
-        return false;
     },
     _points: function _points(self) {
         // compute total points
@@ -145,45 +161,64 @@ bm = {
             }
         },0);
     },
-    _distrCombo: _distrCombo(self, dealSelector.distr) {
+    _distrCombo: _distrCombo(self, selectDistr) {
         // test for distr combination
         var combDistr;
         //NS
         combDistr = _sumDistr(self, self.north.distr, self.south.distr);
-        if _comboMatch(self, combDistr, dealSelector.distr) {
-            return true
+        if (self._comboMatch(self, combDistr, selectDistr)) {
+            return true;
         }
         //NE
-
-        //NW
-
-        //ES
-
-        //EW
-
-        //SW
-    },
-    _comboMatch: function _comboMatch(self, combDistr, select) {
-        var result = [];
-        // c
-        if (select[0] === -1) {
-            result.push(true);
+        combDistr = _sumDistr(self, self.north.distr, self.east.distr);
+        if (self._comboMatch(self, combDistr, selectDistr)) {
+            self._changeHands(self, 'NE');
+            return true;
         }
-        else {
-            if (combDistr[0]===select[0]) {
-                result.push(true);
-            }
-            else {
-                result.push(false);
-            }
+        //NW
+        combDistr = _sumDistr(self, self.north.distr, self.west.distr);
+        if (self._comboMatch(self, combDistr, selectDistr)) {
+            self._changeHands(self, 'NW');
+            return true
+        }
+        //ES
+        combDistr = _sumDistr(self, self.east.distr, self.south.distr);
+        if (self._comboMatch(self, combDistr, selectDistr)) {
+            self._changeHands(self, 'ES');
+            return true
+        }
+        //EW
+        combDistr = _sumDistr(self, self.east.distr, self.west.distr);
+        if (self._comboMatch(self, combDistr, selectDistr)) {
+            self._changeHands(self, 'EW');
+            return true
+        }
+        //SW
+        combDistr = _sumDistr(self, self.south.distr, self.west.distr);
+        if (self._comboMatch(self, combDistr, selectDistr)) {
+            self._changeHands(self, 'SW');
+            return true
+        }
+        return false;
+    },
+    _comboMatch: function _comboMatch(self, combDistr, selectDistr) {
+        // c
+        if (combDistr[0]!==selectDistr[0]) {
+            return false;
         }
         // d
-
+        if (combDistr[1]!==selectDistr[1]) {
+            return false;
+        }
         // h
-
+        if (combDistr[2]!==selectDistr[2]) {
+            return false;
+        }
         // s
-
-        return result.every(true);
+        if (combDistr[3]!==selectDistr[3]) {
+            return false;
+        }
+        return true
     },
     _sumDistr: function _sumDistr(self, a, b) {
         return [a[0]+b[0], a[1]+b[1], a[2]+b[2], a[3]+b[3]]
