@@ -47,7 +47,8 @@ In addition Server sends a *rightDealFound(deal)* message to participating clien
 
 ##Summary##
 
+
 | Client | Server    | Server    | Server    |
 |        | clientsID | clientsID | clientsID |
 |        | State t0  | State t1  | action    |
-|--------|-----------|-----------|-----------|        
+| ------ | --------- | --------- | --------- |        
