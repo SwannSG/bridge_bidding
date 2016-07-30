@@ -1,5 +1,11 @@
 #Client Server Interaction#
 
+##How to send messages between client and server##
+
+
+
+
+
 ##Invoke Dealing##
 
 *Dealing* can be invoked from a client or the server.
@@ -47,7 +53,7 @@ In addition Server sends a *rightDealFound(deal)* message to participating clien
 
 ##Summary##
 
-If the Server state t0 is NOT in the designated state, then any action of message is ignored.
+If the Server state t0 is NOT in the designated state, then message is ignored.
 
 | Client Send                 | Server State t0     | Server State t1     | Server Send                 | Server Action  |
 | --------------------------- | ------------------- | ------------------- | --------------------------- | -------------- |

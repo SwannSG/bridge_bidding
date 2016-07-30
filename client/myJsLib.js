@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 // bm name will need to be changed
 // bm is a global variable on the client
 bm = {
