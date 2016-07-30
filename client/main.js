@@ -112,7 +112,7 @@ Template.bidButtons.onRendered(function() {
 
 Template.bidButtons.helpers({
     allBids: function() {
-        console.log('allBids')
+        console.log('allBids');
         var bids = [
             [{da:'', label:'1&clubs;', value: '1c'},{da:'', label:'<span class="red">1&diams;</span>', value: '1d'},
             {da:'', label:'<span class="red">1&hearts;</span>', value: '1h'},{da:'', label:'1&spades;', value: '1s'},
@@ -214,34 +214,3 @@ Template.body.events({
 
     }
 })
-=======
-=======
->>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
-
-import './main.html';
-
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
-
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  }
-});
-
-Template.hello.events({
-  'click button':function(event, instance) {
-    // increment the counter when button is clicked
-    instance.counter.set(instance.counter.get() + 1);
-  }
-});
-
-Template.timeNow.helpers(
-    {current_time: new Date()}
-);
-<<<<<<< HEAD
->>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36
-=======
->>>>>>> 9d9248f87212f3f7e4316ea9fbff2ee70b89ab36

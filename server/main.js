@@ -13,6 +13,4 @@ Meteor.publish('subColFlag1', function() {
 
 Meteor.publish('subColFlag2', function() {
     return ColFlag2.find();
-
-Meteor.startup(() => {
-  // code to run on server at startup
+});
