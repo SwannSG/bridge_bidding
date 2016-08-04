@@ -266,7 +266,20 @@ bm = {
             }
         }
         return [nc, nd, nh, ns];
-    }
+    },
+    handSummary: function handSummary() {
+        console.log(this);
+        var self = this;
+        console.log('hcp: ' + self._getPoints(self, self.north));
+        console.log(self._dispDistr(self, self.north));
+    },
+    _dispDistr: function _dispDistr(self, hand) {
+        var distr = self._getDistr(self, hand);
+        return (
+            'distr: [' + distr[0] + 's, ' + distr[1] + 'h, ' + distr[2] + 'd, ' + distr[3] + 'c]'
+        );
+    },
+
 }
 
 getCardHeight = function() {
