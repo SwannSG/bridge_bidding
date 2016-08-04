@@ -71,6 +71,10 @@ Template.north.helpers({
         Session.get('toggleTemplateA');
         return bm.north;
     },
+    summary: function() {
+        Session.get('toggleTemplateA');
+        return bm.handSummary(bm.north);
+    },
 });
 
 Template.east.helpers({
@@ -93,6 +97,7 @@ Template.west.helpers({
         return bm.west;
     },
 });
+
 
 Template.bidSequence.helpers({
     bidSeq: function() {

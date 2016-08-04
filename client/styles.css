@@ -49,6 +49,17 @@ span.red {
     margin-bottom: 10px;
 }
 
+.north-summary {
+    background-color: white;
+    margin: 0px;
+    padding: 2px;
+    display: inline-block;
+    position: absolute;
+    left: 0px;     /* calc(var(--cardheight)*0.144*4); */
+    top: calc(var(--cardheight)*0.8);
+    z-index: 100;
+}
+
 /*ensure each card has no margin or padding*/
 .north.card {
     display: inline-block;

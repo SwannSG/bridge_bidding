@@ -267,11 +267,10 @@ bm = {
         }
         return [nc, nd, nh, ns];
     },
-    handSummary: function handSummary() {
-        console.log(this);
+    handSummary: function handSummary(hand) {
         var self = this;
-        console.log('hcp: ' + self._getPoints(self, self.north));
-        console.log(self._dispDistr(self, self.north));
+        console.log('hcp: ' + self._getPoints(self, hand) + ' ' + self._dispDistr(self, hand));
+        return ('hcp: ' + self._getPoints(self, hand) + ' ' + self._dispDistr(self, hand));
     },
     _dispDistr: function _dispDistr(self, hand) {
         var distr = self._getDistr(self, hand);
