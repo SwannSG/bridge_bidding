@@ -234,7 +234,7 @@ h3.west {
     position: absolute;
     /*below controls positioning of h3*/
     top: 260px;
-    left: 80px;
+    left: 60px;
     -ms-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
