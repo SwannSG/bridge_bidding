@@ -7,32 +7,34 @@
 <body>
     <div class="container-fluid">
         <nav class="row">
-            <!-- menu stuff goes here     -->
-            <button id="deal" class="btn btn-default" value='deal'>Deal</button>
+            <div class="col-xs-12">
+                <!-- menu stuff goes here     -->
+                <button id="deal" class="btn btn-default" value='deal'>Deal</button>
+            </div>
         </nav>
         <div class="row">
             <div class="col-xs-2 left"><!-- left column -->
-                <h3 class="west">
+                <!-- <h3 class="west">
                     West
-                </h3>
+                </h3> -->
                 {{> west}}
             </div>
             <div class="col-xs-8"><!-- center column -->
                 {{> north}}
                 <div class="center-content">
                     <div class="col-xs-6">
-                        {{> bidButtons}}
+                        <!-- {{> bidButtons}} -->
                     </div>
                     <div class="col-xs-6">
-                        {{> bidSequence}}
+                        <!-- {{> bidSequence}} -->
                     </div>
                 </div>
-                <div class="col-xs-2">
+                <!-- <div class="col-xs-2">
                     <button id="pass" class="btn btn-default" value='pass'>Pass</button>
                 </div>
-                <div class="col-xs-10">
-                    {{> south}}
-                </div>
+                <div class="col-xs-10"> -->
+                {{> south}}
+                <!-- </div> -->
             </div>
             <div class="col-xs-2 right"><!-- right column -->
                 {{> east}}
@@ -55,6 +57,7 @@
         {{#each card in west}}
             <img src="{{card}}.svg" class="west card card{{@index}}" />
         {{/each}}
+        <h4 class="west-summary">{{summary}}</h4>
     </div>
 </template>
 
@@ -63,6 +66,7 @@
         {{#each card in east}}
             <img src="{{card}}.svg" class="east card card{{@index}}" />
         {{/each}}
+        <!-- <h4 class="east-summary">{{summary}}</h4> -->
     </div>
 </template>
 
@@ -71,6 +75,7 @@
         {{#each card in south}}
             <img src="{{card}}.svg" class="south card card{{@index}}" />
         {{/each}}
+        <h4 class="south-summary">{{summary}}</h4>
     </div>
 </template>
 

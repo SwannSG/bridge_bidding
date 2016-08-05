@@ -275,7 +275,7 @@ bm = {
     _dispDistr: function _dispDistr(self, hand) {
         var distr = self._getDistr(self, hand);
         return (
-            'distr: [' + distr[0] + 's, ' + distr[1] + 'h, ' + distr[2] + 'd, ' + distr[3] + 'c]'
+            'distr: [' + distr[3] + 's, ' + distr[2] + 'h, ' + distr[0] + 'c, ' + distr[1] + 'd]'
         );
     },
 

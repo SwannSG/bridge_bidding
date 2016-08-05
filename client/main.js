@@ -82,6 +82,10 @@ Template.east.helpers({
         Session.get('toggleTemplateA');
         return bm.east;
     },
+    summary: function() {
+        Session.get('toggleTemplateA');
+        return bm.handSummary(bm.east);
+    },
 });
 
 Template.south.helpers({
@@ -89,12 +93,20 @@ Template.south.helpers({
         Session.get('toggleTemplateA');
         return bm.south;
     },
+    summary: function() {
+        Session.get('toggleTemplateA');
+        return bm.handSummary(bm.south);
+    },
 });
 
 Template.west.helpers({
     west: function() {
         Session.get('toggleTemplateA');
         return bm.west;
+    },
+    summary: function() {
+        Session.get('toggleTemplateA');
+        return bm.handSummary(bm.west);
     },
 });
 

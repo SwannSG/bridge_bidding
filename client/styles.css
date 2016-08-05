@@ -4,27 +4,33 @@
 }
 
 body {
-    background-color: lightblue;
+    background-color: gray;
 }
 
 nav {
     height: 50px;
     background-color: lightgreen;
     margin-bottom: 5px;
+    text-align: center;
 }
 
 .left {/*for test only*/
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 .right {/*for test only*/
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .center-content {
     height: calc(var(--cardheight)*1.43);
-    background-color: yellow;
+    background-color: gray;
 }
+
+#deal {
+    margin-top: 8px;
+}
+
 
 #pass {
     margin-top: 10px;
@@ -49,15 +55,14 @@ span.red {
     margin-bottom: 10px;
 }
 
-.north-summary {
+.north-summary, .south-summary {
     background-color: white;
     margin: 0px;
     padding: 2px;
     display: inline-block;
     position: absolute;
-    left: 0px;     /* calc(var(--cardheight)*0.144*4); */
+    left: 2px;
     top: calc(var(--cardheight)*0.8);
-    z-index: 100;
 }
 
 /*ensure each card has no margin or padding*/
@@ -127,7 +132,7 @@ span.red {
 }
 
 .north.card12 {
-    position:static;
+    position:absolute;
     left: calc(var(--cardheight)*0.144*12);
 }
 /*end north styling **********************************************************/
@@ -144,6 +149,7 @@ span.red {
     width: var(--cardheight);
     position: relative;
 }
+
 
 .west.card {
     padding: 0px;
@@ -233,6 +239,23 @@ h3.west {
     top: 260px;
     left: 80px;
 }
+
+.west-summary {
+    z-index: 100;
+    /*rotate each card*/
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+    position: absolute;
+    background-color: white;
+    top: 110px;
+    left: -100px;
+}
+
+
 /*end west styling **********************************************************/
 
 
@@ -323,6 +346,13 @@ h3.west {
     position:absolute;
     bottom: calc(var(--cardheight)*(12 * 0.145 - 0.15 ));
 }
+
+
+.east-summary {
+    
+}
+
+
 /*end east styling **********************************************************/
 
 
@@ -336,11 +366,9 @@ h3.west {
     width: calc(var(--cardheight)*2.285);
     /*position must be set relative to allow absolute positioning of the cards to work correctly*/
     position: relative;
-    margin-left: calc(var(--cardheight)*0.172);
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 10px;
-
-    background-color: green;
-    display: inline-block;
 }
 
 /*ensure each card has no margin or padding*/
@@ -410,7 +438,7 @@ h3.west {
 }
 
 .south.card12 {
-    position:static;
+    position:absolute;
     left: calc(var(--cardheight)*0.144*12);
 }
 /*end south styling **********************************************************/
